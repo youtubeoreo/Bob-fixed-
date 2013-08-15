@@ -18,15 +18,25 @@ void setup()
 { 
   LeftWheel.attach( LWPin );  //  Attaches LeftWheel to the pin LWPin
   RightWheel.attach( RWPin );  // Attaches another wheel to be controlled by the pin RWPin
-
+  
+  Serial.begin(9600);
 } 
 void loop() 
 { 
+   Serial.println("Hello Wazzzzzzzzzzaaaaaaaaaaaaaapppppppppp!!!!!!!!!!!!!!!!")
+   
+   if ( digitalRead(3) == HIGH )
+   {
      Forward(4); 
-     Backward(4);
+   }
+   else
+   {
+   Stop(0.1);
+   }
+/*     Backward(4);
      RotateLeft(2);
      RotateRight(2);
-     Stop(3);
+  */   
 } 
 void Forward(double seconds)
 {
@@ -36,7 +46,7 @@ void Forward(double seconds)
 
      //The CRS thinks it is always at 90 degrees
      //if you tell it to go to 180 degrees it will go really fast clock-wise
-     //0 degrees really quickly counterclockwise
+   k  //0 degrees really quickly counterclockwise
      // 95 really slowly clockwise
      
     double leftspeed = (-speed/100.0*90.0 + 90) ;
